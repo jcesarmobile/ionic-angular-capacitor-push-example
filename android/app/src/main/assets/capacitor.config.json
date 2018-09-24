@@ -1,0 +1,6 @@
+{
+  "appId": "com.jcesarmobile.capacitor.push",
+  "appName": "CapacitorPushSample",
+  "bundledWebRuntime": false,
+  "webDir": "www"
+}
