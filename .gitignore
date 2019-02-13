@@ -29,6 +29,7 @@ plugins/android.json
 plugins/ios.json
 $RECYCLE.BIN/
 ios/capacitor-cordova-ios-plugins/
+android/capacitor-cordova-android-plugins/
 
 .DS_Store
 Thumbs.db
