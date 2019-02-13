@@ -7,6 +7,7 @@
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs">docs</a> will be your guide.</p>
+  <ion-list>
+    <ion-item *ngFor="let notif of notifications; let i = index;">{{i+1}}. {{notif | json}}</ion-item>
+  </ion-list>
 </ion-content>

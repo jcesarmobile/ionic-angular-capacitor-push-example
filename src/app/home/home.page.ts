@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Plugins, PushNotification, PushNotificationToken } from '@capacitor/core';
+import { Plugins, PushNotification, PushNotificationActionPerformed, PushNotificationToken } from '@capacitor/core';
 
 const { PushNotifications } = Plugins;
 
@@ -9,6 +9,9 @@ const { PushNotifications } = Plugins;
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+
+  notifications: any = [];
+
   ngOnInit() {
     console.log('ng init');
     PushNotifications.register();
@@ -20,6 +23,12 @@ export class HomePage {
     });
     PushNotifications.addListener('pushNotificationReceived', (notification: PushNotification) => {
       console.log('notification ' + JSON.stringify(notification));
+      this.notifications.push(notification);
+    });
+
+    PushNotifications.addListener('pushNotificationActionPerformed', (notification: PushNotificationActionPerformed) => {
+      console.log('notification ' + JSON.stringify(notification));
+      this.notifications.push(notification);
     });
   }
 }
