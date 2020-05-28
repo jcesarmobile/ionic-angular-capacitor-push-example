@@ -33,8 +33,14 @@ export class HomePage {
   }
 
   async register() {
-    const result = await PushNotifications.register();
-    console.log(result);
+    const permResult = await PushNotifications.requestPermission();
+    if (permResult.granted) {
+      // Register with Apple / Google to receive push via APNS/FCM
+      const result = await PushNotifications.register();
+      console.log('register result', result);
+    } else {
+      alert(`push notifications won't work`);
+    }
   }
 
 
