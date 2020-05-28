@@ -7,6 +7,10 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-button (click)="register()" color="primary">register</ion-button>
+  <ion-button (click)="getNotifs()" color="primary">get notifications</ion-button>
+  <ion-button (click)="removeNotifs()" color="primary">Remove notifications</ion-button>
+  <ion-button (click)="removeAllNotifs()" color="primary">Remove all notifications</ion-button>
   <ion-list>
     <ion-item *ngFor="let notif of notifications; let i = index;">{{i+1}}. {{notif | json}}</ion-item>
   </ion-list>

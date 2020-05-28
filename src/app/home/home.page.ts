@@ -9,12 +9,12 @@ const { PushNotifications } = Plugins;
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
+  i = 0;
   notifications: any = [];
 
   ngOnInit() {
     console.log('ng init');
-    PushNotifications.register();
+
     PushNotifications.addListener('registration', (token: PushNotificationToken) => {
       console.log('token ' + token.value);
     });
@@ -30,5 +30,27 @@ export class HomePage {
       console.log('notification ' + JSON.stringify(notification));
       this.notifications.push(notification);
     });
+  }
+
+  async register() {
+    const result = await PushNotifications.register();
+    console.log(result);
+  }
+
+
+  async getNotifs() {
+    const notifs = await PushNotifications.getDeliveredNotifications();
+    console.log('notifs',notifs);
+  }
+
+  async removeNotifs() {
+    const notifs = await PushNotifications.getDeliveredNotifications();
+    const result = await PushNotifications.removeDeliveredNotifications(notifs);
+    console.log('remove',result);
+  }
+
+  async removeAllNotifs() {
+    const result = await PushNotifications.removeAllDeliveredNotifications();
+    console.log('remove all',result);
   }
 }
